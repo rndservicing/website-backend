@@ -10,12 +10,14 @@ app.post('/send', async (req, res) => {
   const { name, email, phone, message } = req.body;
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'YOUR_EMAIL@gmail.com',
-      pass: 'YOUR_APP_PASSWORD'
-    }
-  });
+  host: 'smtp.titan.email',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
   try {
     await transporter.sendMail({
