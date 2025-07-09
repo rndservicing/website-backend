@@ -14,14 +14,14 @@ app.post('/send', async (req, res) => {
   port: 587,
   secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
+    user: 'info@rndservicing.ie',
+    pass: 'Robanddar2025!'
   }
 });
 
   try {
     await transporter.sendMail({
-      from: 'YOUR_EMAIL@gmail.com',
+      from: 'rndireland@gmail.com',
       to: 'info@rndservicing.ie',
       subject: 'New Inquiry from Contact Form',
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
