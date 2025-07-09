@@ -21,7 +21,7 @@ app.post('/send', async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: 'rndireland@gmail.com',
+      from: 'info@rndservicing.ie',
       to: 'info@rndservicing.ie',
       subject: 'New Inquiry from Contact Form',
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
