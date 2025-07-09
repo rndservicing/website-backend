@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RND Servicing</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
+
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      background-color: #f2f9ff;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #89CFF0, #007BFF);
+      padding: 0 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      box-sizing: border-box;
+    }
+    .site-title {
+      font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0;
+      white-space: nowrap;
+      letter-spacing: 1.5px;
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      flex: 1;
+      margin-left: 2rem;
+    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s, color 0.3s;
+      letter-spacing: 0.05em;
+    }
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+    .hero {
+      background: url('1.png') no-repeat center center/cover;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      padding-top: 70px; /* space for fixed header */
+      box-sizing: border-box;
+    }
+    .hero img {
+      width: 60%;
+      max-width: 500px;
+      border-radius: 0;
+      margin-top: 0;
+    }
+    section {
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .about, .services, .contact {
+      background-color: #e6f2ff;
+      border-radius: 8px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      color: #222;
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+    }
+    .about h2, .services h2, .contact h2 {
+      color: #007BFF;
+      font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .about p {
+      max-width: 850px;
+      margin-top: 0;
+    }
+    .services p {
+      max-width: 850px;
+      margin-top: 0;
+    }
+    .contact {
+      max-width: 1000px;
+      margin: 0 auto 3rem auto;
+      text-align: center;
+    }
+    .contact form {
+      margin-top: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    .contact label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #0056b3;
+    }
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+    .contact input:focus,
+    .contact textarea:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+    .contact button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 5px;
+      cursor: pointer;
+      letter-spacing: 0.07em;
+      transition: background-color 0.3s ease;
+    }
+    .contact button:hover {
+      background-color: #0056b3;
+    }
+    .contact .contact-info {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #007BFF;
+      letter-spacing: 0.03em;
+    }
+    .contact .contact-info a {
+      color: #007BFF;
+      text-decoration: underline;
+      margin: 0 0.5rem;
+    }
+    .contact .contact-info a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="site-title">RND Servicing</div>
+    <nav>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <img src="logo blue.png" alt="RND Servicing Logo" />
+  </div>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      At RND Servicing, we prioritise your indoor air quality with unwavering commitment. 
+      We specialise in delivering cutting-edge MVHR and MEV ventilation solutions designed to enhance comfort, improve energy efficiency, and ensure healthier environments. 
+      Our expert team guides you seamlessly through every stage of the process — from design and installation to commissioning and ongoing servicing.
+    </p>
+    <p>
+      We partner exclusively with industry-leading manufacturers who share our dedication to innovation, sustainability, and quality. 
+      This ensures that every system we provide is engineered for reliability and long-term performance, supporting smarter energy use and cleaner air for your home or business.
+    </p>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <p>
+      We offer tailored technical and mechanical ventilation services for both commercial and residential clients. 
+      Our expertise spans all major systems, including ProAir and Vent Axia, ensuring you receive the best solution to fit your specific requirements.
+    </p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form" action="mailto:info@rndservicing.ie" method="POST" enctype="text/plain" onsubmit="return validateForm()">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="Name" placeholder="Your full name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="Email" placeholder="your.email@example.com" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="Phone" placeholder="Your phone number" required />
+
+      <label for="message">Description of Inquiry</label>
+      <textarea id="message" name="Message" placeholder="Please describe your inquiry" rows="5" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div class="contact-info">
+      <p>
+        Email us at <a href="mailto:info@rndservicing.ie">info@rndservicing.ie</a><br />
+        Phone: <a href="tel:0851002955">0851002955</a> / <a href="tel:0857341328">0857341328</a>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    function validateForm() {
+      // basic client-side validation before submit
+      const form = document.getElementById('contact-form');
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+      const message = form.message.value.trim();
+      if (!name || !email || !phone || !message) {
+        alert('Please fill out all fields.');
+        return false;
+      }
+      // could add email format validation here if desired
+      return true; // allow form submit
+    }
+  </script>
+</body>
+</html>
