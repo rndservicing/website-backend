@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RND Servicing</title>
+  <title>MVHR & MEV Ventilation Experts | RND Servicing Ireland</title>
+  <meta name="description" content="RND Servicing provides expert MVHR & MEV ventilation services including installation, maintenance, and duct cleaning for homes and businesses in Ireland.">
+  <meta name="keywords" content="MVHR, MEV, Ventilation, Heat Recovery, Ventilation Services, Duct Cleaning, Indoor Air Quality, Energy Efficiency, Ventilation Installation, Ventilation Maintenance, Ireland">
+  <meta name="author" content="RND Servicing">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
 
@@ -69,13 +72,23 @@
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
+      z-index: 1100;
     }
     .hamburger span {
       height: 3px;
       width: 25px;
       background: #fff;
       border-radius: 3px;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
     }
 
     @media (max-width: 768px) {
@@ -311,20 +324,22 @@
   </section>
 
   <script>
-    // Hamburger toggle
     const hamburger = document.getElementById('hamburger');
     const nav = document.querySelector('nav');
+
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
     });
+
     hamburger.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         nav.classList.toggle('active');
+        hamburger.classList.toggle('active');
       }
     });
 
-    // Fade-in on scroll with IntersectionObserver
     const fadeIns = document.querySelectorAll('.about, .services, .contact');
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -336,13 +351,11 @@
     }, { threshold: 0.1 });
     fadeIns.forEach(section => observer.observe(section));
 
-    // Contact form submission
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const button = document.getElementById('submit-button');
       const textSpan = button.querySelector('.text');
 
-      // Start spinning cog
       textSpan.innerHTML = '<span class="icon spinning" aria-hidden="true">⚙️</span> Sending';
       button.disabled = true;
 
@@ -371,7 +384,6 @@
         textSpan.textContent = 'Error';
       }
 
-      // Reset button after 3 seconds
       setTimeout(() => {
         textSpan.textContent = 'Submit';
         button.disabled = false;
