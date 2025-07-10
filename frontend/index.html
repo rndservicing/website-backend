@@ -88,6 +88,7 @@
         background: linear-gradient(to right, #89CFF0, #007BFF);
         width: 100%;
         padding: 1rem 0;
+        box-sizing: border-box;
       }
       nav.active {
         display: flex;
@@ -130,6 +131,13 @@
       color: #222;
       line-height: 1.75;
       letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .about.visible, .services.visible, .contact.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .about h2, .services h2, .contact h2 {
       color: #007BFF;
@@ -184,11 +192,14 @@
       border-radius: 5px;
       cursor: pointer;
       letter-spacing: 0.07em;
-      transition: background-color 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .contact button:hover {
+      background-color: #0056b3;
     }
     .contact button .icon {
       display: inline-block;
@@ -205,17 +216,17 @@
 
     .contact .contact-info {
       margin-top: 1.5rem;
-      font-size: 1rem;
-      color: #007BFF;
-      letter-spacing: 0.03em;
+      font-size: 1.05rem;
+      color: #222;
+      font-weight: 600;
     }
     .contact .contact-info a {
-      color: #007BFF;
-      text-decoration: underline;
-      margin: 0 0.5rem;
+      color: #000;
+      text-decoration: none;
+      font-weight: 700;
     }
     .contact .contact-info a:hover {
-      text-decoration: none;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -227,7 +238,7 @@
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="hamburger" id="hamburger">
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span>
       <span></span>
       <span></span>
@@ -254,14 +265,13 @@
   <section id="services" class="services">
     <h2>Our Services</h2>
     <p>
-      We offer tailored technical and mechanical ventilation services for both commercial and residential clients. 
-      Our expertise spans all major systems, including ProAir and Vent Axia, ensuring you receive the best solution to fit your specific requirements.
+      We offer tailored technical and mechanical ventilation services to meet your unique needs. Our services include MVHR (Mechanical Ventilation with Heat Recovery) system maintenance, cleaning, and repairs, ensuring optimal performance and energy efficiency. We also specialise in the installation and commissioning of new systems, helping you create a healthier and more comfortable indoor environment. Additionally, we provide professional ventilation duct cleaning to remove dust, allergens, and contaminants, improving air quality and system efficiency. No matter the size or complexity of the project, we have the expertise and equipment to get the job done right. Contact us today to schedule a consultation and discover how we can help improve your indoor air quality.
     </p>
   </section>
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <form id="contact-form" method="POST" enctype="text/plain">
+    <form id="contact-form" method="POST" enctype="text/plain" novalidate>
       <label for="name">Name</label>
       <input type="text" id="name" name="Name" placeholder="Your full name" required />
 
@@ -274,7 +284,7 @@
       <label for="message">Description of Inquiry</label>
       <textarea id="message" name="Message" placeholder="Please describe your inquiry" rows="5" required></textarea>
 
-      <button type="submit" id="submit-button">
+      <button type="submit" id="submit-button" aria-live="polite">
         <span class="text">Submit</span>
       </button>
     </form>
@@ -287,19 +297,39 @@
   </section>
 
   <script>
+    // Hamburger toggle
     const hamburger = document.getElementById('hamburger');
     const nav = document.querySelector('nav');
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        nav.classList.toggle('active');
+      }
+    });
 
+    // Fade-in on scroll with IntersectionObserver
+    const fadeIns = document.querySelectorAll('.about, .services, .contact');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeIns.forEach(section => observer.observe(section));
+
+    // Contact form submission
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const button = document.getElementById('submit-button');
       const textSpan = button.querySelector('.text');
 
       // Start spinning cog
-      textSpan.innerHTML = '<span class="icon spinning">⚙️</span> Sending';
+      textSpan.innerHTML = '<span class="icon spinning" aria-hidden="true">⚙️</span> Sending';
       button.disabled = true;
 
       const data = {
@@ -317,19 +347,19 @@
         });
 
         if (response.ok) {
-          textSpan.innerHTML = '<span class="icon">✅</span> Sent';
+          textSpan.innerHTML = '<span class="icon" aria-hidden="true">✅</span> Sent';
           document.getElementById('contact-form').reset();
         } else {
-          textSpan.innerHTML = 'Error';
+          textSpan.textContent = 'Error';
         }
       } catch (error) {
         console.error(error);
-        textSpan.innerHTML = 'Error';
+        textSpan.textContent = 'Error';
       }
 
       // Reset button after 3 seconds
       setTimeout(() => {
-        textSpan.innerHTML = 'Submit';
+        textSpan.textContent = 'Submit';
         button.disabled = false;
       }, 3000);
     });
