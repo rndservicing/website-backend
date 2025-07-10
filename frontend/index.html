@@ -72,13 +72,23 @@
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
+      z-index: 1100;
     }
     .hamburger span {
       height: 3px;
       width: 25px;
       background: #fff;
       border-radius: 3px;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
     }
 
     @media (max-width: 768px) {
@@ -316,13 +326,17 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const nav = document.querySelector('nav');
+
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
     });
+
     hamburger.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         nav.classList.toggle('active');
+        hamburger.classList.toggle('active');
       }
     });
 
