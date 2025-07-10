@@ -27,7 +27,6 @@
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       display: flex;
-      flex-direction: row;
       align-items: center;
       justify-content: space-between;
       height: 70px;
@@ -45,10 +44,7 @@
     nav {
       display: flex;
       gap: 2rem;
-      justify-content: flex-end;
-      flex-wrap: nowrap;
-      flex: 1;
-      margin-left: 2rem;
+      align-items: center;
     }
     nav a {
       color: #ffffff;
@@ -67,27 +63,40 @@
     .hamburger {
       display: none;
       flex-direction: column;
+      justify-content: center;
       cursor: pointer;
       gap: 5px;
+      z-index: 1100;
     }
     .hamburger span {
       height: 3px;
       width: 25px;
       background: #fff;
       border-radius: 3px;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
 
     @media (max-width: 768px) {
       nav {
-        display: none;
         flex-direction: column;
-        position: absolute;
+        position: fixed;
         top: 70px;
         left: 0;
-        background: linear-gradient(to right, #89CFF0, #007BFF);
         width: 100%;
+        background: linear-gradient(to right, #89CFF0, #007BFF);
         padding: 1rem 0;
+        display: none;
+        box-sizing: border-box;
       }
       nav.active {
         display: flex;
@@ -111,14 +120,11 @@
     .hero img {
       width: 60%;
       max-width: 500px;
-      border-radius: 0;
-      margin-top: 0;
     }
     section {
       padding: 100px 20px;
       max-width: 1000px;
       margin: 0 auto;
-      box-sizing: border-box;
     }
     .about, .services, .contact {
       background-color: #e6f2ff;
@@ -128,8 +134,6 @@
       margin-bottom: 2.5rem;
       font-size: 1.1rem;
       color: #222;
-      line-height: 1.75;
-      letter-spacing: 0.02em;
     }
     .about h2, .services h2, .contact h2 {
       color: #007BFF;
@@ -137,19 +141,12 @@
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-    }
-    .contact {
-      max-width: 1000px;
-      margin: 0 auto 3rem auto;
-      text-align: center;
     }
     .contact form {
       margin-top: 1rem;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      text-align: left;
     }
     .contact label {
       display: block;
@@ -167,7 +164,6 @@
       font-size: 1rem;
       font-family: inherit;
       transition: border-color 0.3s;
-      resize: vertical;
     }
     .contact input:focus,
     .contact textarea:focus {
@@ -191,7 +187,6 @@
       gap: 0.5rem;
     }
     .contact button .icon {
-      display: inline-block;
       font-size: 1.2rem;
     }
 
@@ -207,12 +202,10 @@
       margin-top: 1.5rem;
       font-size: 1rem;
       color: #007BFF;
-      letter-spacing: 0.03em;
     }
     .contact .contact-info a {
       color: #007BFF;
       text-decoration: underline;
-      margin: 0 0.5rem;
     }
     .contact .contact-info a:hover {
       text-decoration: none;
@@ -240,39 +233,28 @@
 
   <section id="about" class="about">
     <h2>About Us</h2>
-    <p>
-      At RND Servicing, we prioritise your indoor air quality with unwavering commitment. 
-      We specialise in delivering cutting-edge MVHR and MEV ventilation solutions designed to enhance comfort, improve energy efficiency, and ensure healthier environments. 
-      Our expert team guides you seamlessly through every stage of the process — from design and installation to commissioning and ongoing servicing.
-    </p>
-    <p>
-      We partner exclusively with industry-leading manufacturers who share our dedication to innovation, sustainability, and quality. 
-      This ensures that every system we provide is engineered for reliability and long-term performance, supporting smarter energy use and cleaner air for your home or business.
-    </p>
+    <p>At RND Servicing, we prioritise your indoor air quality with unwavering commitment. With extensive experience in the ventilation industry, we offer top-tier solutions for domestic and commercial customers alike. Our mission is to enhance the quality of your living and working environment through innovative ventilation services tailored to your needs. Our team consists of highly trained and qualified technicians who are dedicated to delivering exceptional service. We understand the importance of maintaining optimal indoor air quality, and we work tirelessly to ensure your ventilation systems are operating at their best. Whether it’s routine maintenance, system upgrades, or emergency repairs, you can count on us to provide reliable and efficient service every time.</p>
   </section>
 
   <section id="services" class="services">
     <h2>Our Services</h2>
-    <p>
-      We offer tailored technical and mechanical ventilation services for both commercial and residential clients. 
-      Our expertise spans all major systems, including ProAir and Vent Axia, ensuring you receive the best solution to fit your specific requirements.
-    </p>
+    <p>We offer tailored technical and mechanical ventilation services to meet your unique needs. Our services include MVHR (Mechanical Ventilation with Heat Recovery) system maintenance, cleaning, and repairs, ensuring optimal performance and energy efficiency. We also specialise in the installation and commissioning of new systems, helping you create a healthier and more comfortable indoor environment. Additionally, we provide professional ventilation duct cleaning to remove dust, allergens, and contaminants, improving air quality and system efficiency. No matter the size or complexity of the project, we have the expertise and equipment to get the job done right. Contact us today to schedule a consultation and discover how we can help improve your indoor air quality.</p>
   </section>
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <form id="contact-form" method="POST" enctype="text/plain">
+    <form id="contact-form">
       <label for="name">Name</label>
-      <input type="text" id="name" name="Name" placeholder="Your full name" required />
+      <input type="text" id="name" name="Name" required />
 
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="Email" placeholder="your.email@example.com" required />
+      <input type="email" id="email" name="Email" required />
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="Phone" placeholder="Your phone number" required />
+      <input type="tel" id="phone" name="Phone" required />
 
       <label for="message">Description of Inquiry</label>
-      <textarea id="message" name="Message" placeholder="Please describe your inquiry" rows="5" required></textarea>
+      <textarea id="message" name="Message" rows="5" required></textarea>
 
       <button type="submit" id="submit-button">
         <span class="text">Submit</span>
@@ -291,6 +273,7 @@
     const nav = document.querySelector('nav');
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
     });
 
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
@@ -298,7 +281,6 @@
       const button = document.getElementById('submit-button');
       const textSpan = button.querySelector('.text');
 
-      // Start spinning cog
       textSpan.innerHTML = '<span class="icon spinning">⚙️</span> Sending';
       button.disabled = true;
 
@@ -327,7 +309,6 @@
         textSpan.innerHTML = 'Error';
       }
 
-      // Reset button after 3 seconds
       setTimeout(() => {
         textSpan.innerHTML = 'Submit';
         button.disabled = false;
