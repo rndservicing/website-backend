@@ -79,59 +79,21 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        padding: 0 1rem;
-      }
-      .site-title {
-        font-size: 1.8rem;
-      }
       nav {
+        display: none;
         flex-direction: column;
-        position: fixed;
-        top: 0;
+        position: absolute;
+        top: 70px;
         left: 0;
         background: linear-gradient(to right, #89CFF0, #007BFF);
         width: 100%;
-        height: 100%;
-        padding-top: 100px;
-        align-items: center;
-        z-index: 999;
-        transform: translateX(-100%);
-        transition: transform 0.4s ease;
-      }
-      nav a {
-        font-size: 1.5rem;
-        padding: 1rem 2rem;
+        padding: 1rem 0;
       }
       nav.active {
-        transform: translateX(0);
+        display: flex;
       }
       .hamburger {
         display: flex;
-      }
-      .hero img {
-        width: 80%;
-        margin-top: 0;
-      }
-      section {
-        padding: 60px 15px;
-      }
-      .about, .services, .contact {
-        padding: 2rem 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .about h2, .services h2, .contact h2 {
-        font-size: 1.75rem;
-      }
-      .contact form {
-        padding: 0 0.5rem;
-      }
-      .contact button {
-        width: 100%;
-        font-size: 1.1rem;
-      }
-      .contact .contact-info {
-        font-size: 0.95rem;
       }
     }
 
@@ -178,6 +140,8 @@
       letter-spacing: 0.05em;
     }
     .contact {
+      max-width: 1000px;
+      margin: 0 auto 3rem auto;
       text-align: center;
     }
     .contact form {
@@ -325,16 +289,8 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const nav = document.querySelector('nav');
-    
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
-    });
-
-    // Auto-close mobile menu on link click (optional, recommended)
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('active');
-      });
     });
 
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
@@ -342,6 +298,7 @@
       const button = document.getElementById('submit-button');
       const textSpan = button.querySelector('.text');
 
+      // Start spinning cog
       textSpan.innerHTML = '<span class="icon spinning">⚙️</span> Sending';
       button.disabled = true;
 
@@ -370,6 +327,7 @@
         textSpan.innerHTML = 'Error';
       }
 
+      // Reset button after 3 seconds
       setTimeout(() => {
         textSpan.innerHTML = 'Submit';
         button.disabled = false;
