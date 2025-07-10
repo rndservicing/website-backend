@@ -112,14 +112,21 @@
       width: 60%;
       max-width: 500px;
       border-radius: 0;
-      margin-top: 0;
     }
     section {
       padding: 100px 20px;
       max-width: 1000px;
       margin: 0 auto;
       box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
     }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .about, .services, .contact {
       background-color: #e6f2ff;
       border-radius: 8px;
@@ -139,11 +146,7 @@
       margin-bottom: 1rem;
       letter-spacing: 0.05em;
     }
-    .contact {
-      max-width: 1000px;
-      margin: 0 auto 3rem auto;
-      text-align: center;
-    }
+
     .contact form {
       margin-top: 1rem;
       max-width: 600px;
@@ -174,6 +177,7 @@
       border-color: #007BFF;
       outline: none;
     }
+
     .contact button {
       background-color: #007BFF;
       color: #fff;
@@ -184,23 +188,25 @@
       border-radius: 5px;
       cursor: pointer;
       letter-spacing: 0.07em;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      min-height: 48px;
     }
-    .contact button .icon {
-      display: inline-block;
-      font-size: 1.2rem;
+    .contact button svg {
+      width: 20px;
+      height: 20px;
     }
 
-    .spinning {
+    .spinning svg {
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .contact .contact-info {
@@ -208,7 +214,9 @@
       font-size: 1rem;
       color: #007BFF;
       letter-spacing: 0.03em;
+      text-align: center;
     }
+
     .contact .contact-info a {
       color: #007BFF;
       text-decoration: underline;
@@ -228,9 +236,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
   </header>
 
@@ -238,98 +244,98 @@
     <img src="recources/logo blue.png" alt="RND Servicing Logo" />
   </div>
 
-  <section id="about" class="about">
+  <section id="about" class="about fade-in">
     <h2>About Us</h2>
     <p>
-      At RND Servicing, we prioritise your indoor air quality with unwavering commitment. 
-      We specialise in delivering cutting-edge MVHR and MEV ventilation solutions designed to enhance comfort, improve energy efficiency, and ensure healthier environments. 
-      Our expert team guides you seamlessly through every stage of the process — from design and installation to commissioning and ongoing servicing.
-    </p>
-    <p>
-      We partner exclusively with industry-leading manufacturers who share our dedication to innovation, sustainability, and quality. 
-      This ensures that every system we provide is engineered for reliability and long-term performance, supporting smarter energy use and cleaner air for your home or business.
+      At RND Servicing, we prioritise your indoor air quality with unwavering commitment...
     </p>
   </section>
 
-  <section id="services" class="services">
+  <section id="services" class="services fade-in">
     <h2>Our Services</h2>
     <p>
-      We offer tailored technical and mechanical ventilation services for both commercial and residential clients. 
-      Our expertise spans all major systems, including ProAir and Vent Axia, ensuring you receive the best solution to fit your specific requirements.
+      We offer tailored technical and mechanical ventilation services for both commercial and residential clients...
     </p>
   </section>
 
-  <section id="contact" class="contact">
+  <section id="contact" class="contact fade-in">
     <h2>Contact Us</h2>
-    <form id="contact-form" method="POST" enctype="text/plain">
+    <form id="contact-form">
       <label for="name">Name</label>
-      <input type="text" id="name" name="Name" placeholder="Your full name" required />
-
+      <input type="text" id="name" required />
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="Email" placeholder="your.email@example.com" required />
-
+      <input type="email" id="email" required />
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="Phone" placeholder="Your phone number" required />
-
+      <input type="tel" id="phone" required />
       <label for="message">Description of Inquiry</label>
-      <textarea id="message" name="Message" placeholder="Please describe your inquiry" rows="5" required></textarea>
-
+      <textarea id="message" rows="5" required></textarea>
       <button type="submit" id="submit-button">
         <span class="text">Submit</span>
       </button>
     </form>
     <div class="contact-info">
-      <p>
-        Email us at <a href="mailto:info@rndservicing.ie">info@rndservicing.ie</a><br />
-        Phone: <a href="tel:0851002955">0851002955</a> / <a href="tel:0857341328">0857341328</a>
-      </p>
+      Email: <a href="mailto:info@rndservicing.ie">info@rndservicing.ie</a><br />
+      Phone: <a href="tel:0851002955">0851002955</a> / <a href="tel:0857341328">0857341328</a>
     </div>
   </section>
 
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.querySelector('nav');
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+    // Hamburger menu toggle
+    document.getElementById('hamburger').onclick = () => {
+      document.querySelector('nav').classList.toggle('active');
+    };
 
-    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    // Fade in observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(el => observer.observe(el));
+
+    // SVG icons
+    const icons = {
+      cog: `<svg viewBox="0 0 512 512" fill="#fff"><path d="M487.4 315.7l-45.3-26.2a195.1 195.1 0 0 0 0-66.9l45.3-26.2a12 12 0 0 0 5.5-13.9c-11.7-36.5-31.5-69.8-57.6-97.5a12 12 0 0 0-13.6-2.9l-45.2 20.6a195.7 195.7 0 0 0-58-33.6V24a12 12 0 0 0-12-12h-80a12 12 0 0 0-12 12v49.2a195.7 195.7 0 0 0-58 33.6L90.3 86.1a12 12 0 0 0-13.6 2.9C50.6 117 30.8 150.3 19.1 186.8a12 12 0 0 0 5.5 13.9l45.3 26.2a195.1 195.1 0 0 0 0 66.9l-45.3 26.2a12 12 0 0 0-5.5 13.9c11.7 36.5 31.5 69.8 57.6 97.5a12 12 0 0 0 13.6 2.9l45.2-20.6a195.7 195.7 0 0 0 58 33.6V488a12 12 0 0 0 12 12h80a12 12 0 0 0 12-12v-49.2a195.7 195.7 0 0 0 58-33.6l45.2 20.6a12 12 0 0 0 13.6-2.9c26.1-27.7 45.9-61 57.6-97.5a12 12 0 0 0-5.5-13.9zM256 336a80 80 0 1 1 0-160 80 80 0 0 1 0 160z"/></svg>`,
+      check: `<svg viewBox="0 0 24 24" fill="#00cc66"><path d="M9 16.2l-4.2-4.2L3 13.8 9 19.8l12-12L18.6 6z"/></svg>`,
+      error: `<svg viewBox="0 0 24 24" fill="#cc0000"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>`
+    };
+
+    // Contact form submit
+    document.getElementById('contact-form').addEventListener('submit', async e => {
       e.preventDefault();
       const button = document.getElementById('submit-button');
-      const textSpan = button.querySelector('.text');
+      const span = button.querySelector('.text');
 
-      // Start spinning cog
-      textSpan.innerHTML = '<span class="icon spinning">⚙️</span> Sending';
       button.disabled = true;
+      span.innerHTML = `<span class="spinning">${icons.cog}</span> Sending`;
 
       const data = {
-        name: document.getElementById('name').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        message: document.getElementById('message').value.trim()
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        message: document.getElementById('message').value,
       };
 
       try {
-        const response = await fetch('https://rnd-servicing-backend.onrender.com/send', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const res = await fetch("https://rnd-servicing-backend.onrender.com/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         });
 
-        if (response.ok) {
-          textSpan.innerHTML = '<span class="icon">✅</span> Sent';
+        if (res.ok) {
+          span.innerHTML = `${icons.check} Sent`;
           document.getElementById('contact-form').reset();
         } else {
-          textSpan.innerHTML = 'Error';
+          span.innerHTML = `${icons.error} Failed`;
         }
-      } catch (error) {
-        console.error(error);
-        textSpan.innerHTML = 'Error';
+      } catch (err) {
+        span.innerHTML = `${icons.error} Error`;
       }
 
-      // Reset button after 3 seconds
       setTimeout(() => {
-        textSpan.innerHTML = 'Submit';
+        span.innerHTML = 'Submit';
         button.disabled = false;
       }, 3000);
     });
