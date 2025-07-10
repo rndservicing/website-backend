@@ -96,13 +96,6 @@
       .hamburger {
         display: flex;
       }
-      .hero img {
-        width: 160%;
-        max-width: none;
-        display: block;
-        margin: 0 auto;
-        transform: translateX(-30%);
-      }
     }
 
     .hero {
@@ -122,6 +115,19 @@
       border-radius: 0;
       margin-top: 0;
       transition: width 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transform: none;
+    }
+    @media (max-width: 768px) {
+      .hero img {
+        width: 160%;
+        max-width: none;
+        display: block;
+        margin: 0 auto;
+        transform: none;
+      }
     }
     section {
       padding: 100px 20px;
