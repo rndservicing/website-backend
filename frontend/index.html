@@ -1,4 +1,4 @@
-<!-- FULL HTML (Footer Integrated) -->
+<!-- FULL HTML (Contact Form Fixed + Footer) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -263,15 +263,15 @@
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <form id="contact-form" method="POST" enctype="text/plain" novalidate>
+    <form id="contact-form" method="POST" novalidate>
       <label for="name">Name</label>
-      <input type="text" id="name" name="Name" required />
+      <input type="text" id="name" name="name" required />
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="Email" required />
+      <input type="email" id="email" name="email" required />
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="Phone" required />
+      <input type="tel" id="phone" name="phone" required />
       <label for="message">Description of Inquiry</label>
-      <textarea id="message" name="Message" rows="5" required></textarea>
+      <textarea id="message" name="message" rows="5" required></textarea>
       <button type="submit" id="submit-button">
         <span class="text">Submit</span>
       </button>
@@ -317,6 +317,36 @@
       });
     }, { threshold: 0.1 });
     fadeIns.forEach(section => observer.observe(section));
+
+    // Contact form handler (example - needs backend endpoint to work)
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value,
+      };
+
+      try {
+        const response = await fetch('YOUR_BACKEND_ENDPOINT_HERE', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          alert('Message sent successfully!');
+          form.reset();
+        } else {
+          alert('There was a problem sending your message. Please try again later.');
+        }
+      } catch (error) {
+        alert('An error occurred. Please check your connection and try again.');
+      }
+    });
   </script>
 </body>
 </html>
