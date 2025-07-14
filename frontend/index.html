@@ -9,7 +9,6 @@
   <meta name="author" content="RND Servicing">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
-
     html {
       scroll-behavior: smooth;
     }
@@ -66,7 +65,6 @@
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 5px;
     }
-
     .hamburger {
       display: none;
       flex-direction: column;
@@ -90,7 +88,6 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
     }
-
     @media (max-width: 768px) {
       nav {
         display: none;
@@ -110,7 +107,6 @@
         display: flex;
       }
     }
-
     .hero {
       background: url('1.png') no-repeat center center/cover;
       color: #ffffff;
@@ -135,7 +131,7 @@
     }
     @media (max-width: 768px) {
       .hero img {
-        width: 125%;
+        width: 115%;
         max-width: none;
         display: block;
         margin: 0 auto;
@@ -232,7 +228,6 @@
       display: inline-block;
       font-size: 1.2rem;
     }
-
     .spinning {
       animation: spin 1s linear infinite;
     }
@@ -240,7 +235,6 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-
     .contact .contact-info {
       margin-top: 1.5rem;
       font-size: 1.05rem;
@@ -279,13 +273,9 @@
   <section id="about" class="about">
     <h2>About Us</h2>
     <p>
-      At RND Servicing, we prioritise your indoor air quality with unwavering commitment. 
-      We specialise in delivering cutting-edge MVHR and MEV ventilation solutions designed to enhance comfort, improve energy efficiency, and ensure healthier environments. 
+      At RND Servicing, we prioritise your indoor air quality with unwavering commitment.
+      We specialise in delivering cutting-edge MVHR and MEV ventilation solutions designed to enhance comfort, improve energy efficiency, and ensure healthier environments.
       Our expert team guides you seamlessly through every stage of the process — from design and installation to commissioning and ongoing servicing.
-    </p>
-    <p>
-      We partner exclusively with industry-leading manufacturers who share our dedication to innovation, sustainability, and quality. 
-      This ensures that every system we provide is engineered for reliability and long-term performance, supporting smarter energy use and cleaner air for your home or business.
     </p>
   </section>
 
@@ -301,27 +291,36 @@
     <form id="contact-form" method="POST" enctype="text/plain" novalidate>
       <label for="name">Name</label>
       <input type="text" id="name" name="Name" placeholder="Your full name" required />
-
       <label for="email">Email Address</label>
       <input type="email" id="email" name="Email" placeholder="your.email@example.com" required />
-
       <label for="phone">Phone Number</label>
       <input type="tel" id="phone" name="Phone" placeholder="Your phone number" required />
-
       <label for="message">Description of Inquiry</label>
       <textarea id="message" name="Message" placeholder="Please describe your inquiry" rows="5" required></textarea>
-
       <button type="submit" id="submit-button" aria-live="polite">
         <span class="text">Submit</span>
       </button>
     </form>
-    <div class="contact-info">
-      <p>
-        Email us at <a href="mailto:info@rndservicing.ie">info@rndservicing.ie</a><br />
-        Phone: <a href="tel:0851002955">0851002955</a> / <a href="tel:0857341328">0857341328</a>
-      </p>
+    
     </div>
   </section>
+
+  <footer style="background-color: #007BFF; color: #fff; padding: 2rem 1rem; text-align: center; font-size: 1rem; line-height: 1.6;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p style="margin: 0 0 1rem 0; font-weight: 600;">
+        Email: <a href="mailto:info@rndservicing.ie" style="color: #fff; text-decoration: underline;">info@rndservicing.ie</a><br>
+        Phone: <a href="tel:0851002955" style="color: #fff; text-decoration: underline;">0851002955</a> / <a href="tel:0857341328" style="color: #fff; text-decoration: underline;">0857341328</a>
+      </p>
+    </div>
+        <h3 style="margin: 0 0 0.5rem 0; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0.05em;">Operating Hours</h3>
+        <p style="margin: 0;">
+          Monday – Friday: 9:00 AM – 6:00 PM<br>
+          Saturday: 9:00 AM – 2:00 PM<br>
+          Sunday: Closed
+        </p>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const hamburger = document.getElementById('hamburger');
