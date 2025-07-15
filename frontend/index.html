@@ -281,7 +281,16 @@
     @keyframes scroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-500%); }
-    }
+    
+
+     /* Make slideshow responsive */
+    @media (max-width: 768px) {
+      .slideshow-container {
+        height: 300px;
+      }
+      .slide img {
+        object-fit: contain;
+      }
 
 
   </style>
