@@ -73,30 +73,7 @@
       z-index: 1100;
     }
 
-    .slideshow-container {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      height: 400px;
-    }
-    .slideshow-track {
-      display: flex;
-      width: calc(100% * 6);
-      animation: scroll 30s linear infinite;
-    }
-    .slide {
-      flex: 0 0 100%;
-      height: 100%;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    @keyframes scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-500%); }
-    }
+    
     .hamburger span {
       height: 3px;
       width: 25px;
@@ -172,7 +149,9 @@
     .about, .services, .contact {
       background-color: #e6f2ff;
       border-radius: 8px;
-      padding: 3rem 2.5rem;
+      padding: 1px 2.5rem;
+      padding-top: 1px;
+      padding-bottom: 1rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.12);
       margin-bottom: 2.5rem;
       font-size: 1.1rem;
@@ -274,6 +253,36 @@
     .contact .contact-info a:hover {
       text-decoration: underline;
     }
+
+    .slideshow-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      height: 400px;
+    }
+    .slideshow-track {
+      display: flex;
+      width: calc(100% * 0.7);
+      animation: scroll 20s linear infinite;
+    }
+    .slide {
+      flex: 0 0 100%;
+      height: 400px;
+    }
+    
+    /*this css affects the image in the container*/
+    .slide img {
+      width: 500px;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-500%); }
+    }
+
+
   </style>
 </head>
 <body>
@@ -311,7 +320,9 @@
     </p>
   </section>
 
-  <div class="slideshow-container">
+  <section id="about" class="about">
+    <h2>Gallery</h2>
+    <div class="slideshow-container">
     <div class="slideshow-track">
       <div class="slide"><img src="recources/duct1.jpg" alt="Slide 1"></div>
       <div class="slide"><img src="recources/duct2.jpg" alt="Slide 2"></div>
@@ -321,6 +332,9 @@
       <div class="slide"><img src="recources/duct6.jpg" alt="Slide 6"></div>
     </div>
   </div>
+  </section>
+
+  
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
