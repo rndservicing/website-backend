@@ -91,6 +91,35 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
     @media (max-width: 768px) {
+      body {
+        margin: 0;
+        font-family: 'Open Sans', Arial, sans-serif;
+        background-color: #f2f9ff;
+        color: #333;
+        line-height: 1.6;
+        width: 100%;
+      }
+      .hero {
+        background: url('1.png') no-repeat center center/cover;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+        padding-top: 70px;
+        box-sizing: border-box;
+      }
+
+      .hero img {
+        width: 115%;
+        max-width: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transform: none;
+      }
+
       nav {
         display: none;
         flex-direction: column;
@@ -108,7 +137,73 @@
       .hamburger {
         display: flex;
       }
+
+      section {
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
+    .about, .services, .contact, .gallery {
+      background-color: #e6f2ff;
+      border-radius: 8px;
+      padding: 1px 2.5rem;
+      padding-top: 1px;
+      padding-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      color: #222;
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .about.visible, .services.visible, .contact.visible, .gallery.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .about h2, .services h2, .contact h2, .gallery h2 {
+      color: #007BFF;
+      font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+      .slideshow-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      height: 400px;
+      }
+
+      .slideshow-track {
+        display: flex;
+        width: calc(100% * 6);
+        animation: scroll 1s linear infinite;
+      }
+      .slide {
+        flex: 0 0 100%;
+        height: 600px;
+      }
+    
+      /*this css affects the image in the container*/
+      .slide img {
+        width: 50px;
+        height: 415px;
+        object-fit: scale-down;
+        border-radius: 10px;
+      }
+
+      @keyframes scroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-500%); }
+      }
+    }  
+
     .hero {
       background: url('1.png') no-repeat center center/cover;
       color: #ffffff;
@@ -131,23 +226,16 @@
       margin-right: auto;
       transform: none;
     }
-    @media (max-width: 790px) {
-      .hero img {
-        width: 115%;
-        max-width: none;
-        display: block;
-        margin-left: auto;
-      margin-right: auto;
-        transform: none;
-      }
-    }
+    /*@media (max-width: 790px) {
+      
+    }*/
     section {
       padding: 100px 20px;
       max-width: 1000px;
       margin: 0 auto;
       box-sizing: border-box;
     }
-    .about, .services, .contact {
+    .about, .services, .contact, .gallery {
       background-color: #e6f2ff;
       border-radius: 8px;
       padding: 1px 2.5rem;
@@ -163,11 +251,11 @@
       transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .about.visible, .services.visible, .contact.visible {
+    .about.visible, .services.visible, .contact.visible, .gallery.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .about h2, .services h2, .contact h2 {
+    .about h2, .services h2, .contact h2, .gallery h2 {
       color: #007BFF;
       font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-weight: 700;
@@ -278,19 +366,15 @@
       object-fit: scale-down;
       border-radius: 10px;
     }
+
     @keyframes scroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-500%); }
-    
+    }
 
      /* Make slideshow responsive */
-    @media (max-width: 768px) {
-      .slideshow-container {
-        height: 300px;
-      }
-      .slide img {
-        object-fit: scale-down;
-      }
+    /*@media (max-width: 768px) {*/
+      
 
 
   </style>
@@ -302,6 +386,7 @@
       <a href="#about">About Us</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
+      <a href="#gallery">Gallery</a>
     </nav>
     <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span>
@@ -330,7 +415,7 @@
     </p>
   </section>
 
-  <section id="about" class="about">
+  <section id="gallery" class="gallery">
     <h2>Gallery</h2>
     <div class="slideshow-container">
     <div class="slideshow-track">
@@ -399,7 +484,7 @@
       }
     });
 
-    const fadeIns = document.querySelectorAll('.about, .services, .contact');
+    const fadeIns = document.querySelectorAll('.about, .services, .contact, .gallery');
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
