@@ -72,6 +72,31 @@
       gap: 5px;
       z-index: 1100;
     }
+
+    .slideshow-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      height: 400px;
+    }
+    .slideshow-track {
+      display: flex;
+      width: calc(100% * 6);
+      animation: scroll 30s linear infinite;
+    }
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-500%); }
+    }
     .hamburger span {
       height: 3px;
       width: 25px;
@@ -249,11 +274,6 @@
     .contact .contact-info a:hover {
       text-decoration: underline;
     }
-
-    @keyframes scrollSlideshow {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
   </style>
 </head>
 <body>
@@ -291,16 +311,16 @@
     </p>
   </section>
 
-  <section class="slideshow" style="overflow: hidden; white-space: nowrap; background-color: #e6f2ff; padding: 2rem 0;">
-    <div class="slideshow-container" style="display: inline-block; animation: scrollSlideshow 60s linear infinite;">
-      <img src="image1.jpg" alt="Slide 1" style="height: 200px; margin-right: 20px; display: inline-block;" />
-      <img src="image2.jpg" alt="Slide 2" style="height: 200px; margin-right: 20px; display: inline-block;" />
-      <img src="image3.jpg" alt="Slide 3" style="height: 200px; margin-right: 20px; display: inline-block;" />
-      <img src="image4.jpg" alt="Slide 4" style="height: 200px; margin-right: 20px; display: inline-block;" />
-      <img src="image5.jpg" alt="Slide 5" style="height: 200px; margin-right: 20px; display: inline-block;" />
-      <img src="image6.jpg" alt="Slide 6" style="height: 200px; margin-right: 20px; display: inline-block;" />
+  <div class="slideshow-container">
+    <div class="slideshow-track">
+      <div class="slide"><img src="recources/duct1.jpg" alt="Slide 1"></div>
+      <div class="slide"><img src="recources/duct2.jpg" alt="Slide 2"></div>
+      <div class="slide"><img src="recources/duct3.jpg" alt="Slide 3"></div>
+      <div class="slide"><img src="recources/duct4.jpg" alt="Slide 4"></div>
+      <div class="slide"><img src="recources/duct5.jpg" alt="Slide 5"></div>
+      <div class="slide"><img src="recources/duct6.jpg" alt="Slide 6"></div>
     </div>
-  </section>
+  </div>
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
@@ -317,6 +337,8 @@
         <span class="text">Submit</span>
       </button>
     </form>
+    
+    </div>
   </section>
 
   <footer style="background-color: #007BFF; color: #fff; padding: 2rem 1rem; text-align: center; font-size: 1rem; line-height: 1.6;">
@@ -325,12 +347,14 @@
         Email: <a href="mailto:info@rndservicing.ie" style="color: #fff; text-decoration: underline;">info@rndservicing.ie</a><br>
         Phone: <a href="tel:0851002955" style="color: #fff; text-decoration: underline;">0851002955</a> / <a href="tel:0857341328" style="color: #fff; text-decoration: underline;">0857341328</a>
       </p>
-      <h3 style="margin: 0 0 0.5rem 0; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0.05em;">Operating Hours</h3>
-      <p style="margin: 0;">
-        Monday – Friday: 9:00 AM – 6:00 PM<br>
-        Saturday: 9:00 AM – 2:00 PM<br>
-        Sunday: Closed
-      </p>
+    </div>
+        <h3 style="margin: 0 0 0.5rem 0; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0.05em;">Operating Hours</h3>
+        <p style="margin: 0;">
+          Monday – Friday: 9:00 AM – 6:00 PM<br>
+          Saturday: 9:00 AM – 2:00 PM<br>
+          Sunday: Closed
+        </p>
+      </div>
     </div>
   </footer>
 
@@ -387,3 +411,19 @@
         if (response.ok) {
           textSpan.innerHTML = '<span class="icon" aria-hidden="true">✅</span> Sent';
           document.getElementById('contact-form').reset();
+        } else {
+          textSpan.textContent = 'Error';
+        }
+      } catch (error) {
+        console.error(error);
+        textSpan.textContent = 'Error';
+      }
+
+      setTimeout(() => {
+        textSpan.textContent = 'Submit';
+        button.disabled = false;
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
