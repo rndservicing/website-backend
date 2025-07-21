@@ -626,7 +626,9 @@
             });
         });
 
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const button = document.getElementById('submit-button');
       const textSpan = button.querySelector('.text');
@@ -664,13 +666,6 @@
         button.disabled = false;
       }, 3000);
     });
-        
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
                 // Here you would typically send the form data to your server
                 // For demonstration, we'll just show an alert
                 alert('Thank you for your message! We will get back to you soon.');
