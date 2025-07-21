@@ -9,18 +9,15 @@ app.use(express.json());
 app.post('/send', async (req, res) => {
   const { name, email, phone, service, message } = req.body;
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.titan.email',
-  port: 587,
-  secure: false, // Use TLS instead of SSL
-  auth: {
-    user: 'info@rndservicing.ie',
-    pass: 'Robanddar2025!'
-  }
-});
-
-  }
-});
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.titan.email',
+    port: 587,
+    secure: false,
+    auth: {
+      user: 'info@rndservicing.ie',
+      pass: 'Robanddar2025!'
+    }
+  });
 
   try {
     await transporter.sendMail({
@@ -28,12 +25,11 @@ const transporter = nodemailer.createTransport({
       to: 'info@rndservicing.ie',
       subject: 'New Inquiry from Contact Form',
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nMessage: ${message}`
-
     });
     res.json({ success: true });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to send email' });
+    console.error('EMAIL ERROR:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
