@@ -11,8 +11,8 @@ app.post('/send', async (req, res) => {
 
 
   const transporter = nodemailer.createTransport({
-  host: 'smtp.titan.email',
-  port: 587,
+  host: 'smtp0101.titan.email',
+  port: 465,
   secure: false
 
   secure: true,
