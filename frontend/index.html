@@ -633,45 +633,37 @@
         });
         
         // Form submission
-        const contactForm = document.getElementById('contact-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const button = document.getElementById('submit-button');
-      const textSpan = button.querySelector('.text');
+        <script>
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-      textSpan.innerHTML = '<span class="icon spinning" aria-hidden="true">⚙️</span> Sending';
-      button.disabled = true;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-      const data = {
-        name: document.getElementById('name').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        service: document.getElementById('service').value.trim()
-        message: document.getElementById('message').value.trim()
-      };
+    try {
+      const response = await fetch('https://rnd-servicing-backend.onrender.com/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
 
-      try {
-        const response = await fetch('https://rnd-servicing-backend.onrender.com/send', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-          textSpan.innerHTML = '<span class="icon" aria-hidden="true">✅</span> Sent';
-          document.getElementById('contact-form').reset();
-        } else {
-          textSpan.textContent = 'Error';
-        }
-      } catch (error) {
-        console.error(error);
-        textSpan.textContent = 'Error';
+      const result = await response.json();
+      if (result.success) {
+        alert('Message sent successfully!');
+        form.reset();
+      } else {
+        alert('Failed to send message.');
       }
+    } catch (err) {
+      console.error('Error:', err);
+      alert('An error occurred while sending the message.');
+    }
+  });
 
-      setTimeout(() => {
-        textSpan.textContent = 'Submit';
-        button.disabled = false;
-      }, 3000);
-    });
+        {
                 // Reset the form
                 document.getElementById('contact-form').reset();
 
