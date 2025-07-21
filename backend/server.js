@@ -9,16 +9,16 @@ app.use(express.json());
 app.post('/send', async (req, res) => {
   const { name, email, phone, service, message } = req.body;
 
-
-  const transporter = nodemailer.createTransport({
-  host: 'smtp0101.titan.email',
-  port: 465,
-  secure: false
-
-  secure: true,
+const transporter = nodemailer.createTransport({
+  host: 'smtp.titan.email',
+  port: 587,
+  secure: false, // Use TLS instead of SSL
   auth: {
     user: 'info@rndservicing.ie',
     pass: 'Robanddar2025!'
+  }
+});
+
   }
 });
 
