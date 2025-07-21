@@ -420,95 +420,24 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-12">
-                <div class="mb-12 lg:mb-0">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Get In Touch</h2>
-                    <p class="text-lg text-gray-600 mb-8">Ready to improve your property's ventilation? Contact us today for a free consultation or quote.</p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone-alt text-blue-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Call Us</h4>
-                                <p class="text-gray-600">0851002955/ 0857341328</p>
-                                
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope text-blue-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Email Us</h4>
-                                <p class="text-gray-600">info@rndservicing.ie</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-clock text-blue-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Opening Hours</h4>
-                                <p class="text-gray-600">Monday - Friday: 8am - 6pm</p>
-                                <p class="text-gray-600">Saturday: 9am - 2pm</p>
-                                <p class="text-gray-600">Emergency call-outs: 24/7</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
-                    <form id="contactForm">
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="service" class="block text-gray-700 font-medium mb-2">Service Required</label>
-                            <select id="service" name="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                                <option value="">Select a service</option>
-                                <option value="MVHR Installation">MVHR Installation</option>
-                                <option value="MEV Installation">MEV Installation</option>
-                                <option value="System Maintenance">System Maintenance</option>
-                                <option value="Repairs">Repairs</option>
-                                <option value="Consultation">Consultation</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form" method="POST" enctype="text/plain" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="Name" placeholder="Your full name" required />
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="Email" placeholder="your.email@example.com" required />
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="Phone" placeholder="Your phone number" required />
+      <label for="message">Description of Inquiry</label>
+      <textarea id="message" name="Message" placeholder="Please describe your inquiry" rows="5" required></textarea>
+      <button type="submit" id="submit-button" aria-live="polite">
+        <span class="text">Submit</span>
+      </button>
+    </form>
+    
+    </div>
+  </section>
     <!-- Service Area Section -->
     <section class="py-12 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
