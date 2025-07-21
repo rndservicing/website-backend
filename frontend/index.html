@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +98,7 @@
     <section id="services" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Specialized Services</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Specialised Services</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">Comprehensive solutions for all your ventilation needs across Ireland</p>
             </div>
             
@@ -273,8 +274,10 @@
             <div class="lg:flex lg:items-center lg:justify-between">
                 <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-12">
                     <h2 class="text-3xl font-bold text-gray-900 mb-6">About RND Servicing</h2>
-                    <p class="text-lg text-gray-600 mb-6">Founded in 2010, RND Servicing has become Ireland's leading specialist in Mechanical Ventilation with Heat Recovery (MVHR) and Mechanical Extract Ventilation (MEV) systems.</p>
-                    <p class="text-lg text-gray-600 mb-6">Our team of certified technicians brings over 50 years of combined experience in designing, installing, and maintaining ventilation systems for residential and commercial properties across Ireland.</p>
+                    <p class="text-lg text-gray-600 mb-6">RND Servicing has become Ireland's leading specialist in Mechanical Ventilation with Heat Recovery (MVHR) and Mechanical Extract Ventilation (MEV) systems.</p>
+                    <p class="text-lg text-gray-600 mb-6">Our team of certified technicians brings over 10 years of combined experience in designing, installing, and maintaining ventilation systems for residential and commercial properties across Ireland. Our team has successfully completed NZEB Ventilation training in the installation, balancing, and commissioning of ventilation systems. This ensures that all systems are designed and installed in strict accordance with the most recent Technical Guidance Document Part F (2019), providing assurance that your home adheres to the highest standards of energy efficiency and indoor air quality. Official installer of Proair MVHR systems with a vast knowledge and experience in all leading brands.
+
+  </p>
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <div class="bg-blue-100 p-2 rounded-full mr-4">
@@ -307,7 +310,7 @@
                 </div>
                 <div class="lg:w-1/2">
                     <div class="bg-gray-100 rounded-lg overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Technician working on ventilation system" class="w-full h-auto">
+                        <img src="recources/loetb.jpeg">
                     </div>
                 </div>
             </div>
@@ -384,7 +387,7 @@
                         <div class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">SM</div>
                         <div>
                             <h4 class="font-bold">Sarah Murphy</h4>
-                            <p class="text-gray-600 text-sm">Cork</p>
+                            <p class="text-gray-600 text-sm">Meath</p>
                         </div>
                     </div>
                     <div class="flex mb-2">
@@ -403,7 +406,7 @@
                         <div class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">TO</div>
                         <div>
                             <h4 class="font-bold">Tom O'Sullivan</h4>
-                            <p class="text-gray-600 text-sm">Galway</p>
+                            <p class="text-gray-600 text-sm">Kildare</p>
                         </div>
                     </div>
                     <div class="flex mb-2">
@@ -589,8 +592,8 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 RND Servicing. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms of Service</a></p>
+            <div class="border-t border-gray-800 mt-8 pt-8, text-align: centre, text-gray-400">
+                <p>&copy; 2025 RND Servicing. All rights reserved.
             </div>
         </div>
     </footer>
@@ -625,8 +628,9 @@
                 }
             });
         });
-
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const button = document.getElementById('submit-button');
       const textSpan = button.querySelector('.text');
@@ -638,6 +642,7 @@
         name: document.getElementById('name').value.trim(),
         email: document.getElementById('email').value.trim(),
         phone: document.getElementById('phone').value.trim(),
+        service required: document.getElementById('service required').value.trim()
         message: document.getElementById('message').value.trim()
       };
 
@@ -664,17 +669,6 @@
         button.disabled = false;
       }, 3000);
     });
-        
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Here you would typically send the form data to your server
-                // For demonstration, we'll just show an alert
-                alert('Thank you for your message! We will get back to you soon.');
-                
                 // Reset the form
                 this.reset();
             });
