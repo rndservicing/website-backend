@@ -2,6 +2,7 @@ services:
   - type: web
     name: rnd-servicing-backend
     env: node
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && node server.js
+    buildCommand: npm install
+    startCommand: node server.js
     plan: free
+    rootDir: backend
