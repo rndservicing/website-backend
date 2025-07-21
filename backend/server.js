@@ -7,7 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/send', async (req, res) => {
-  const { name, email, phone, message } = req.body;
+  const { name, email, phone, service, message } = req.body;
+
 
   const transporter = nodemailer.createTransport({
   host: 'smtp0101.titan.email',
@@ -24,7 +25,8 @@ app.post('/send', async (req, res) => {
       from: 'info@rndservicing.ie',
       to: 'info@rndservicing.ie',
       subject: 'New Inquiry from Contact Form',
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nMessage: ${message}`
+
     });
     res.json({ success: true });
   } catch (error) {
