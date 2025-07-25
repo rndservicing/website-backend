@@ -8,13 +8,17 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/send', async (req, res) => {
-  const { name, email, phone, service, message } = req.body;
+  // const { name, email, phone, service, message } = req.body;
   console.log(req.body);
-  console.log(req.body.name);
-  console.log(req.body.email);
+  // console.log(${name));
+  const name = req.body.name;
+  const email = req.body.email;
+  const phone = req.body.phone;
+  const service = req.body.service;
+  const message = req.body.message;
 
   const transporter = nodemailer.createTransport({
-    host: 'smtp.titan.email',
+    host: 'smtp0101.titan.email',
     port: 465,
     secure: false,
     auth: {
