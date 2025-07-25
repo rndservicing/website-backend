@@ -650,9 +650,11 @@
     name, email, phone, service, message
     })
     });
+        console.log(response);
 
         
       const result = await response.json();
+        console.log(result);
       if (result.success) {
         alert('Message sent successfully!');
         form.reset();
