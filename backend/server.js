@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.post('/send', async (req, res) => {
   const { name, email, phone, service, message } = req.body;
+  console.log(req.body);
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.titan.email',
