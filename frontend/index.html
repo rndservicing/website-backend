@@ -642,13 +642,14 @@
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://rnd-servicing-backend.onrender.com/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch('https://your-backend-url.onrender.com/send', {
+      method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+    name, email, phone, service, message
+    })
+    });
+
 
       const result = await response.json();
       if (result.success) {
