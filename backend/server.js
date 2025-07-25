@@ -1,9 +1,3 @@
-/website-backend
-├── backend/
-│   ├── server.js ✅
-│   ├── package.json
-├── render.yaml
-
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
@@ -25,7 +19,11 @@ app.post('/send', async (req, res) => {
       pass: 'Robanddar2025!' // Ideally use an environment variable for security
     }
   });
-
+    /website-backend
+├── backend/
+│   ├── server.js 
+│   ├── package.json
+├── render.yaml
   try {
     await transporter.sendMail({
       from: 'info@rndservicing.ie',
