@@ -13,7 +13,7 @@ app.post('/send', async (req, res) => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.titan.email',
     port: 465,
-    secure: true,
+    secure: false,
     auth: {
       user: 'info@rndservicing.ie',
       pass: 'Robanddar2025!' // Ideally use an environment variable for security
