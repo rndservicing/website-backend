@@ -62,6 +62,30 @@
   </style>
 </head>
 <body>
+  <div class="privacy-banner" id="privacyBanner">
+    <h2>We value your privacy</h2>
+    <p>
+      We use cookies to enhance your browsing experience, serve personalised ads or content, 
+      and analyse our traffic. By clicking "Accept All", you consent to our use of cookies.
+    </p>
+    <div class="privacy-buttons">
+      <button class="accept-btn" onclick="acceptCookies()">Accept All</button>
+      <button class="decline-btn" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+
+  <script>
+    function acceptCookies() {
+      document.getElementById("privacyBanner").style.display = "none";
+      alert("You accepted cookies!");
+      // Here you could set a cookie or localStorage flag
+    }
+
+    function declineCookies() {
+      document.getElementById("privacyBanner").style.display = "none";
+      alert("You declined cookies!");
+      // Here you could disable tracking or ads
+    }
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RND Servicing - MVHR & MEV Specialists in Ireland</title>
