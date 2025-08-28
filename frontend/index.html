@@ -384,7 +384,7 @@
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">SW</div>
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">SM</div>
                         <div>
                             <h4 class="font-bold">Sarah Walsh</h4>
                             <p class="text-gray-600 text-sm">Meath</p>
@@ -403,7 +403,7 @@
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">TS</div>
+                        <div class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">TO</div>
                         <div>
                             <h4 class="font-bold">Tom Sullivan</h4>
                             <p class="text-gray-600 text-sm">Kildare</p>
@@ -645,7 +645,8 @@
 // {
 //     name, email, phone, service, message
 //     }
-     
+        
+      const result = await response.json();
         // console.log(result);
       if (result.success) {
         alert('Message sent successfully!');
